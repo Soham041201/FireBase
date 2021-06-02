@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "94538826217",
+    "project_id": "understandingfirebase-b8727",
+    "storage_bucket": "understandingfirebase-b8727.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94538826217:android:7f6225aa4063aa06da8b78",
+        "android_client_info": {
+          "package_name": "com.example.understanding_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94538826217-prj4u9ok6bcrpaa358nt0d6tj01hii75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRLWAXl_NbEGHArfh_8u-6CrIPI7ScaxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94538826217-prj4u9ok6bcrpaa358nt0d6tj01hii75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
