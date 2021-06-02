@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           value:  AuthService().user ,
           initialData: null,
           child: MaterialApp(
-        title: 'Flutter',
+        title: 'Flutter App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
