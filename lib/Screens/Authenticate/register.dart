@@ -24,7 +24,7 @@ class _RegisterState extends State<Register> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.pink,
-        title: Center(child: Text('Finance Manager')),
+        title: Center(child: Text('Finance Management')),
       ),
       
       body: Container(
