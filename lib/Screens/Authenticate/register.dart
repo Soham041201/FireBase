@@ -43,7 +43,7 @@ class _RegisterState extends State<Register> {
                            TextFormField(
                                  style: TextStyle(
                           fontSize: 20.0, fontWeight: FontWeight.w500) ,
-                decoration: formDesign('Enter your name'),
+                decoration: formDesign('Enter your names'),
                 validator: (val) => val!.isEmpty ? 'Enter your Name' : null,
                 onChanged: (val) {
                   setState(() => name = val);
