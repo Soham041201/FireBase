@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:understanding_firebase/Screens/models/user.dart';
-import 'package:understanding_firebase/services/database.dart';
+
 
 
 
@@ -33,7 +33,6 @@ Future loginWithEmailAndPassword(String email,String password) async{
     UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User? user= result.user;
       //creating a new user document for user
-    await DataBase(uid: user!.uid).updateUserData('raju', '15', 'seller');
     return _userFromFirebaseUser(user);
   }catch(e){  
     print(e.toString());
