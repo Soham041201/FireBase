@@ -25,8 +25,9 @@ final _fromKey = GlobalKey<FormState>();
     return loading? Loading() :Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Center(child: Text('Sign In page')),
+        //if you want to change any properties of the text field box then change it in the modelDesign.dart file
+        backgroundColor: Colors.pink,
+        title: Text('Sign In page'),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical:30,horizontal:30),
@@ -36,6 +37,8 @@ final _fromKey = GlobalKey<FormState>();
               children:[
                 SizedBox(height:20),
                 TextFormField(
+                  style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w500) ,
                   decoration: formDesign('Email'),
                   validator: (val) => val!.isEmpty ? 'Enter your Email':null ,
                   onChanged: (val){
@@ -45,6 +48,8 @@ final _fromKey = GlobalKey<FormState>();
                 ),
                  SizedBox(height:20),
                 TextFormField(
+                   style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w500) ,
                   decoration: formDesign('Password'),
                      validator: (val) => val!.length <6? 'Password should be more then 6 Characters':null ,
                   obscureText: true,

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:understanding_firebase/Screens/Home/appDrawer.dart';
 import 'package:understanding_firebase/Screens/models/music.dart';
+import 'package:understanding_firebase/homePage_options/balalance_trade.dart';
+import 'package:understanding_firebase/homePage_options/expst.dart';
+import 'package:understanding_firebase/homePage_options/records.dart';
+import 'package:understanding_firebase/homePage_options/upplpay.dart';
 import 'package:understanding_firebase/services/auth.dart';
 import 'package:understanding_firebase/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:understanding_firebase/Screens/Home/bodydata.dart';
+
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
@@ -13,12 +18,11 @@ class Home extends StatelessWidget {
           value: DataBase(uid:'').music,
           initialData: [],
           child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.purple,
-          title: Center(
-            child: Text('Home Page', textAlign: TextAlign.justify),
-          ),
-          actions: [
+    
+      appBar: AppBar(
+        title: new Text("Home Page"),
+        backgroundColor: Colors.pink,
+        actions: [
             TextButton(
               onPressed: () async {
                 await _auth.signOut();
@@ -26,9 +30,161 @@ class Home extends StatelessWidget {
               child: Icon(Icons.account_box),
             )
           ],
-        ),
-        body: BodyData(),
       ),
+      drawer: AppDrawer(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.pink,
+        foregroundColor: Colors.white,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Records(),
+            ),
+          );
+        },
+        child: Text(
+          '+',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Montserrat',
+            fontSize: 40.0,
+          ),
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            child: Stack(
+              children: <Widget>[
+                Align(alignment: Alignment.centerLeft),
+                Container(
+                  padding: EdgeInsets.fromLTRB(25.0, 20.0, 0.0, 0.0),
+                  child: Text('Accounts',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline)),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Stack(
+              children: <Widget>[
+                Align(alignment: Alignment.centerLeft),
+                Container(
+                    padding: EdgeInsets.fromLTRB(25.0, 40.0, 0.0, 0.0),
+                    child: Material(
+                        child: GestureDetector(
+                      onTap: () {
+  Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Records(),),);
+                      },
+                      child: Text('Records',
+                          style: TextStyle(
+                              fontSize: 25.0, fontWeight: FontWeight.bold)),
+                    ))),
+              ],
+            ),
+          ),
+          Container(
+            child: Stack(
+              children: <Widget>[
+                Align(alignment: Alignment.centerLeft),
+                Container(
+                    padding: EdgeInsets.fromLTRB(25.0, 30.0, 0.0, 0.0),
+                    child: Material(
+                        child: GestureDetector(
+                      onTap: () {
+
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ExpenseStruct(),
+                          ),
+                        );
+                      },
+                      child: Text('Expenses Structure',
+                          style: TextStyle(
+                              fontSize: 25.0, fontWeight: FontWeight.bold)),
+                    ))),
+              ],
+            ),
+          ),
+          Container(
+            child: Stack(
+              children: <Widget>[
+                Align(alignment: Alignment.centerLeft),
+                Container(
+                    padding: EdgeInsets.fromLTRB(25.0, 30.0, 0.0, 0.0),
+                    child: Material(
+                        child: GestureDetector(
+                      onTap: () {
+      
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BalanceTrade(),
+                          ),
+                        );
+                      },
+                      child: Text('Balance Trend',
+                          style: TextStyle(
+                              fontSize: 25.0, fontWeight: FontWeight.bold)),
+                    ))),
+              ],
+            ),
+          ),
+          Container(
+            child: Stack(
+              children: <Widget>[
+                Align(alignment: Alignment.centerLeft),
+                Container(
+                    padding: EdgeInsets.fromLTRB(25.0, 30.0, 25.0, 0.0),
+                    child: Material(
+                        child: GestureDetector(
+                      onTap: () {
+                       
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Upplpay(),
+                          ),
+                        );
+                      },
+                      child: Text('Upcoming planned payments',
+                          style: TextStyle(
+                              fontSize: 25.0, fontWeight: FontWeight.bold)),
+                    ),),),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ), 
+          
+          
+          //Scaffold(
+      //   appBar: AppBar(
+      //     backgroundColor: Colors.purple,
+      //     title: Center(
+      //       child: Text('Home Page', textAlign: TextAlign.justify),
+      //     ),
+      //     actions: [
+      //       TextButton(
+      //         onPressed: () async {
+      //           await _auth.signOut();
+      //         },
+      //         child: Icon(Icons.account_box),
+      //       )
+      //     ],
+      //   ),
+      //   body: BodyData(),
+      // ),
     );
   }
 }
