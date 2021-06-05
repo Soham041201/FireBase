@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:understanding_firebase/homePage_options/expst.dart';
 
 class Records extends StatefulWidget {
   @override
@@ -55,7 +56,13 @@ class _HomeState extends State<Records> {
                                 side: BorderSide(color: Colors.red)),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ExpenseStruct(),
+            ),);
+                        },
                         child: Text(
                           'ADD',
                           style: TextStyle(
