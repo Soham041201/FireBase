@@ -6,7 +6,14 @@ class Records extends StatefulWidget {
 }
 
 class _HomeState extends State<Records> {
+  final TextEditingController _controller = TextEditingController();
+
   String totalIncome ='';
+  String emi ='';
+  String groceries ='';
+  String shopping ='';
+  String education ='';
+  String housing ='';
   @override
   
   Widget build(context) {
@@ -69,8 +76,9 @@ class _HomeState extends State<Records> {
                 child: Column(
                   children: <Widget>[
                     TextField(
+                      controller: _controller,
                       onChanged: (val){
-                        setState(()=> totalIncome);
+                        setState(()=> totalIncome=val);
                       },
                       decoration: InputDecoration(
                           labelText: 'TOTAL INCOME',
@@ -84,6 +92,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                        controller: _controller,
+                      onChanged: (val){
+                        setState(()=> groceries=val);
+                      },
                       decoration: InputDecoration(
                           labelText: 'GROCERIES',
                           labelStyle: TextStyle(
@@ -96,6 +108,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                        controller: _controller,
+                      onChanged: (val){
+                        setState(()=> emi=val);
+                      },
                       decoration: InputDecoration(
                           labelText: 'EMI',
                           labelStyle: TextStyle(
@@ -108,6 +124,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                        controller: _controller,
+                      onChanged: (val){
+                        setState(()=> shopping=val);
+                      },
                       decoration: InputDecoration(
                           labelText: 'SHOPPING',
                           labelStyle: TextStyle(
@@ -120,6 +140,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                        controller: _controller,
+                      onChanged: (val){
+                        setState(()=> housing=val);
+                      },
                       decoration: InputDecoration(
                           labelText: 'HOUSING',
                           labelStyle: TextStyle(
@@ -132,6 +156,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                        controller: _controller,
+                      onChanged: (val){
+                        setState(()=> education=val);
+                      },
                       decoration: InputDecoration(
                           labelText: 'EDUCATION',
                           labelStyle: TextStyle(
@@ -153,4 +181,14 @@ class _HomeState extends State<Records> {
   }
 }
 
+class DataofUser{
+String totalIncome;
+  String emi;
+  String groceries;
+  String shopping;
+  String education;
+  String housing;
 
+DataofUser({required this.totalIncome,required this.education,required this.emi,required this.groceries,required this.housing,required this.shopping});
+
+}
