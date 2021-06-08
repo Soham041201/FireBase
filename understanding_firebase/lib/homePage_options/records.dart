@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:understanding_firebase/homePage_options/expst.dart';
+import 'package:understanding_firebase/Screens/Authenticate/pie_data.dart';
+
+import 'package:understanding_firebase/services/percentageCalculator.dart';
+
 
 class Records extends StatefulWidget {
   @override
@@ -8,19 +11,16 @@ class Records extends StatefulWidget {
 
 class _HomeState extends State<Records> {
   final TextEditingController _controller = TextEditingController();
-
-  String totalIncome ='';
-  String emi ='';
-  String groceries ='';
-  String shopping ='';
-  String education ='';
-  String housing ='';
+  double totalIncome = 0;
+  double groceries =0;
+  double emi = 0;
+  double shopping = 0;
+  double housing = 0;
+  double education =0;
   @override
-  
   Widget build(context) {
     return MaterialApp(
       home: Scaffold(
-      
         appBar: AppBar(
           title: new Text("Records"),
           backgroundColor: Colors.pink,
@@ -56,12 +56,23 @@ class _HomeState extends State<Records> {
                                 side: BorderSide(color: Colors.red)),
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
+                          PercentageCalculator myCalculator =
+                              PercentageCalculator(
+                                  totalIncome: totalIncome,
+                                  education: education,
+                                  emi: emi.toString(),
+                                  groceries: groceries.toString(),
+                                  housing: housing.toString(),
+                                  shopping: shopping.toString());
+                          _controller.clear();
+
                           Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ExpenseStruct(),
-            ),);
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>Pie(percentageEducation: myCalculator.percentageEducation,percentageEmi: myCalculator.percentageEmi,percentageGroceries: myCalculator.percentageGroceries,percentageHousing: myCalculator.percentageGroceries, percentageShopping: myCalculator.percentageShopping),
+                            ),
+                          );
                         },
                         child: Text(
                           'ADD',
@@ -83,9 +94,9 @@ class _HomeState extends State<Records> {
                 child: Column(
                   children: <Widget>[
                     TextField(
-                      controller: _controller,
-                      onChanged: (val){
-                        setState(()=> totalIncome=val);
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) {
+                        val= totalIncome.toString();
                       },
                       decoration: InputDecoration(
                           labelText: 'TOTAL INCOME',
@@ -99,9 +110,9 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
-                        controller: _controller,
-                      onChanged: (val){
-                        setState(()=> groceries=val);
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) async{
+                        setState(() =>val = groceries.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'GROCERIES',
@@ -115,9 +126,9 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
-                        controller: _controller,
-                      onChanged: (val){
-                        setState(()=> emi=val);
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) async{
+                        setState(() =>val = emi.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'EMI',
@@ -131,9 +142,9 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
-                        controller: _controller,
-                      onChanged: (val){
-                        setState(()=> shopping=val);
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) async{
+                      setState(() =>val = shopping.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'SHOPPING',
@@ -147,9 +158,9 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
-                        controller: _controller,
-                      onChanged: (val){
-                        setState(()=> housing=val);
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) async{
+                    setState(() =>val = housing.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'HOUSING',
@@ -163,19 +174,21 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
-                        controller: _controller,
-                      onChanged: (val){
-                        setState(()=> education=val);
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) async{
+                   setState(() =>val = education.toString());
                       },
                       decoration: InputDecoration(
-                          labelText: 'EDUCATION',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.black),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.pink))),
+                        labelText: 'EDUCATION',
+                        labelStyle: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.black),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.pink),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -186,16 +199,4 @@ class _HomeState extends State<Records> {
       ),
     );
   }
-}
-
-class DataofUser{
-String totalIncome;
-  String emi;
-  String groceries;
-  String shopping;
-  String education;
-  String housing;
-
-DataofUser({required this.totalIncome,required this.education,required this.emi,required this.groceries,required this.housing,required this.shopping});
-
 }
