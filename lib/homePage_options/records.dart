@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:understanding_firebase/Screens/Authenticate/pie_data.dart';
+
+import 'package:understanding_firebase/services/percentageCalculator.dart';
+
 
 class Records extends StatefulWidget {
   @override
@@ -6,13 +10,17 @@ class Records extends StatefulWidget {
 }
 
 class _HomeState extends State<Records> {
-  String totalIncome ='';
+  final TextEditingController _controller = TextEditingController();
+  double totalIncome = 0;
+  double groceries =0;
+  double emi = 0;
+  double shopping = 0;
+  double housing = 0;
+  double education =0;
   @override
-  
   Widget build(context) {
     return MaterialApp(
       home: Scaffold(
-      
         appBar: AppBar(
           title: new Text("Records"),
           backgroundColor: Colors.pink,
@@ -48,7 +56,24 @@ class _HomeState extends State<Records> {
                                 side: BorderSide(color: Colors.red)),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          PercentageCalculator myCalculator =
+                              PercentageCalculator(
+                                  totalIncome: totalIncome,
+                                  education: education,
+                                  emi: emi.toString(),
+                                  groceries: groceries.toString(),
+                                  housing: housing.toString(),
+                                  shopping: shopping.toString());
+                          _controller.clear();
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>Pie(percentageEducation: myCalculator.percentageEducation,percentageEmi: myCalculator.percentageEmi,percentageGroceries: myCalculator.percentageGroceries,percentageHousing: myCalculator.percentageGroceries, percentageShopping: myCalculator.percentageShopping),
+                            ),
+                          );
+                        },
                         child: Text(
                           'ADD',
                           style: TextStyle(
@@ -69,8 +94,9 @@ class _HomeState extends State<Records> {
                 child: Column(
                   children: <Widget>[
                     TextField(
-                      onChanged: (val){
-                        setState(()=> totalIncome);
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) {
+                        val= totalIncome.toString();
                       },
                       decoration: InputDecoration(
                           labelText: 'TOTAL INCOME',
@@ -84,6 +110,9 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (groceries) {
+                      },
                       decoration: InputDecoration(
                           labelText: 'GROCERIES',
                           labelStyle: TextStyle(
@@ -96,6 +125,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) {
+                        val= emi.toString();
+                      },
                       decoration: InputDecoration(
                           labelText: 'EMI',
                           labelStyle: TextStyle(
@@ -108,6 +141,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) {
+                        val= shopping.toString();
+                      },
                       decoration: InputDecoration(
                           labelText: 'SHOPPING',
                           labelStyle: TextStyle(
@@ -120,6 +157,10 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (val) {
+                      val = housing.toString();
+                      },
                       decoration: InputDecoration(
                           labelText: 'HOUSING',
                           labelStyle: TextStyle(
@@ -132,15 +173,21 @@ class _HomeState extends State<Records> {
                     ),
                     SizedBox(height: 10.0),
                     TextField(
+                      keyboardType: TextInputType.number,
+                      onChanged: (education) {
+                     education= education.toString();
+                      },
                       decoration: InputDecoration(
-                          labelText: 'EDUCATION',
-                          labelStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.black),
-                          focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.pink))),
+                        labelText: 'EDUCATION',
+                        labelStyle: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.black),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.pink),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -152,5 +199,3 @@ class _HomeState extends State<Records> {
     );
   }
 }
-
-
