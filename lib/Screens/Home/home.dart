@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:understanding_firebase/Screens/Authenticate/pie_data.dart';
 import 'package:understanding_firebase/Screens/Home/appDrawer.dart';
-
 import 'package:understanding_firebase/Screens/models/music.dart';
 import 'package:understanding_firebase/homePage_options/balalance_trade.dart';
-import 'package:understanding_firebase/homePage_options/expst.dart';
 import 'package:understanding_firebase/homePage_options/records.dart';
 import 'package:understanding_firebase/homePage_options/upplpay.dart';
 import 'package:understanding_firebase/services/auth.dart';
@@ -93,24 +90,7 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              child: Stack(
-                children: <Widget>[
-                  Align(alignment: Alignment.centerLeft),
-                  Container(
-                      padding: EdgeInsets.fromLTRB(25.0, 30.0, 0.0, 0.0),
-                      child: Material(
-                          child: GestureDetector(
-                        onTap: () {
-                         
-                        },
-                        child: Text('Expenses Structure',
-                            style: TextStyle(
-                                fontSize: 25.0, fontWeight: FontWeight.bold)),
-                      ))),
-                ],
-              ),
-            ),
+            
             Container(
               child: Stack(
                 children: <Widget>[

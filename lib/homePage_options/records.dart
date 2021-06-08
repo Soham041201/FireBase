@@ -56,7 +56,7 @@ class _HomeState extends State<Records> {
                                 side: BorderSide(color: Colors.red)),
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           PercentageCalculator myCalculator =
                               PercentageCalculator(
                                   totalIncome: totalIncome,
@@ -111,7 +111,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (groceries) {
+                      onChanged: (val) async{
+                        setState(() =>val = groceries.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'GROCERIES',
@@ -126,8 +127,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) {
-                        val= emi.toString();
+                      onChanged: (val) async{
+                        setState(() =>val = emi.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'EMI',
@@ -142,8 +143,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) {
-                        val= shopping.toString();
+                      onChanged: (val) async{
+                      setState(() =>val = shopping.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'SHOPPING',
@@ -158,8 +159,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) {
-                      val = housing.toString();
+                      onChanged: (val) async{
+                    setState(() =>val = housing.toString());
                       },
                       decoration: InputDecoration(
                           labelText: 'HOUSING',
@@ -174,8 +175,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (education) {
-                     education= education.toString();
+                      onChanged: (val) async{
+                   setState(() =>val = education.toString());
                       },
                       decoration: InputDecoration(
                         labelText: 'EDUCATION',

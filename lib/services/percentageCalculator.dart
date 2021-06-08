@@ -10,17 +10,17 @@ PercentageCalculator({required this.totalIncome, required this.education,require
   final housing;
   final education;
 
-  
-  
   double percentageEducation=0;
   double percentageShopping=0;
   double percentageEmi=0;
   double percentageHousing=0;
   double percentageGroceries=0;
 
+
+  
   double calculateEducationPercentage(){
-    percentageEducation = (education / (education+housing+emi+shopping+groceries))*100;
-    return percentageEducation;
+  return percentageEducation = (education/ (education+housing+emi+shopping+groceries))*100;
+    
   }
   double calculateEmiPercantage(){
    return percentageEmi = (emi / (education+housing+emi+shopping+groceries))*100;
