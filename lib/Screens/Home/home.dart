@@ -50,101 +50,99 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                child: Stack(
-                  children: <Widget>[
-                    Align(alignment: Alignment.centerLeft),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(25.0, 20.0, 0.0, 0.0),
-                      child: Text('Accounts',
-                          style: TextStyle(
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold,
-                              decoration: TextDecoration.underline)),
-                    ),
-                  ],
-                ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              child: Stack(
+                children: <Widget>[
+                  Align(alignment: Alignment.centerLeft),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(25.0, 20.0, 0.0, 0.0),
+                    child: Text('Accounts',
+                        style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline)),
+                  ),
+                ],
               ),
-              Container(
-                child: Stack(
-                  children: <Widget>[
-                    Align(alignment: Alignment.centerLeft),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(25.0, 40.0, 0.0, 0.0),
-                        child: Material(
-                            child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Records(),
-                              ),
-                            );
-                          },
-                          child: Text('Records',
-                              style: TextStyle(
-                                  fontSize: 25.0, fontWeight: FontWeight.bold)),
-                        ))),
-                  ],
-                ),
-              ),
-              
-              Container(
-                child: Stack(
-                  children: <Widget>[
-                    Align(alignment: Alignment.centerLeft),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(25.0, 30.0, 0.0, 0.0),
+            ),
+            Container(
+              child: Stack(
+                children: <Widget>[
+                  Align(alignment: Alignment.centerLeft),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(25.0, 40.0, 0.0, 0.0),
                       child: Material(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BalanceTrade(),
-                              ),
-                            );
-                          },
-                          child: Text('Balance Trend',
-                              style: TextStyle(
-                                  fontSize: 25.0, fontWeight: FontWeight.bold)),
-                        ),
+                          child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Records(),
+                            ),
+                          );
+                        },
+                        child: Text('Records',
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.bold)),
+                      ))),
+                ],
+              ),
+            ),
+            
+            Container(
+              child: Stack(
+                children: <Widget>[
+                  Align(alignment: Alignment.centerLeft),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(25.0, 30.0, 0.0, 0.0),
+                    child: Material(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BalanceTrade(),
+                            ),
+                          );
+                        },
+                        child: Text('Balance Trend',
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.bold)),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Container(
-                child: Stack(
-                  children: <Widget>[
-                    Align(alignment: Alignment.centerLeft),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(25.0, 30.0, 25.0, 0.0),
-                      child: Material(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Upplpay(),
-                              ),
-                            );
-                          },
-                          child: Text('Upcoming planned payments',
-                              style: TextStyle(
-                                  fontSize: 25.0, fontWeight: FontWeight.bold)),
-                        ),
+            ),
+            Container(
+              child: Stack(
+                children: <Widget>[
+                  Align(alignment: Alignment.centerLeft),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(25.0, 30.0, 25.0, 0.0),
+                    child: Material(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Upplpay(),
+                            ),
+                          );
+                        },
+                        child: Text('Upcoming planned payments',
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.bold)),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
 
