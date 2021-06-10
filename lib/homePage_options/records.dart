@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:understanding_firebase/Screens/Authenticate/bar_chart.dart';
 import 'package:understanding_firebase/Screens/Authenticate/pie_data.dart';
 import 'package:understanding_firebase/services/percentageCalculator.dart';
 
@@ -206,6 +208,43 @@ class _HomeState extends State<Records> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 40),
+                    CupertinoButton(color: Colors.pink,child: Text('See Bar Graph'), onPressed: () async {
+                          PercentageCalculator myCalculator =
+                              PercentageCalculator(
+                                  totalIncome: totalIncome,
+                                  education: education,
+                                  emi: emi,
+                                  groceries: groceries,
+                                  housing: housing,
+                                  shopping: shopping);
+                          _controller.clear();
+                          print(myCalculator.education);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BarGraph(
+                                  percentageEducation:
+                                      myCalculator.calculateEducationPercentage(
+                                          education, housing, double, shopping, emi, groceries),
+                                  percentageEmi: myCalculator.calculateEmiPercantage(
+                                      education, housing, double, shopping, emi, groceries),
+                                  percentageGroceries: myCalculator.calculateGroceries(
+                                      education, housing, double, shopping, emi, groceries),
+                                  percentageHousing:
+                                      myCalculator.calculateHousingPercentage(
+                                          education, housing, double, shopping, emi, groceries),
+                                  percentageShopping:
+                                      myCalculator.calculateShoppingPercentage(
+                                          education,
+                                          housing,
+                                          double,
+                                          shopping,
+                                          emi,
+                                          groceries)),
+                            ),
+                          );
+                        }, )
                   ],
                 ),
               ),
