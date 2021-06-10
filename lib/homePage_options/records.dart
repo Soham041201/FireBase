@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:understanding_firebase/Screens/Authenticate/pie_data.dart';
 import 'package:understanding_firebase/services/percentageCalculator.dart';
 
-
 class Records extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -11,11 +10,11 @@ class Records extends StatefulWidget {
 class _HomeState extends State<Records> {
   final TextEditingController _controller = TextEditingController();
   double totalIncome = 0;
-  double groceries =0;
+  double groceries = 0;
   double emi = 0;
   double shopping = 0;
   double housing = 0;
-  double education =0;
+  double education = 0;
   @override
   Widget build(context) {
     return MaterialApp(
@@ -60,16 +59,34 @@ class _HomeState extends State<Records> {
                               PercentageCalculator(
                                   totalIncome: totalIncome,
                                   education: education,
-                                  emi: emi.toString(),
-                                  groceries: groceries.toString(),
-                                  housing: housing.toString(),
-                                  shopping: shopping.toString());
+                                  emi: emi,
+                                  groceries: groceries,
+                                  housing: housing,
+                                  shopping: shopping);
                           _controller.clear();
-
+                          print(myCalculator.education);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>Pie(percentageEducation: myCalculator.percentageEducation,percentageEmi: myCalculator.percentageEmi,percentageGroceries: myCalculator.percentageGroceries,percentageHousing: myCalculator.percentageGroceries, percentageShopping: myCalculator.percentageShopping),
+                              builder: (context) => Pie(
+                                  percentageEducation:
+                                      myCalculator.calculateEducationPercentage(
+                                          education, housing, double, shopping, emi, groceries),
+                                  percentageEmi: myCalculator.calculateEmiPercantage(
+                                      education, housing, double, shopping, emi, groceries),
+                                  percentageGroceries: myCalculator.calculateGroceries(
+                                      education, housing, double, shopping, emi, groceries),
+                                  percentageHousing:
+                                      myCalculator.calculateHousingPercentage(
+                                          education, housing, double, shopping, emi, groceries),
+                                  percentageShopping:
+                                      myCalculator.calculateShoppingPercentage(
+                                          education,
+                                          housing,
+                                          double,
+                                          shopping,
+                                          emi,
+                                          groceries)),
                             ),
                           );
                         },
@@ -94,8 +111,8 @@ class _HomeState extends State<Records> {
                   children: <Widget>[
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) {
-                        val= totalIncome.toString();
+                      onChanged: (String val) {
+                        totalIncome = double.parse(val);
                       },
                       decoration: InputDecoration(
                           labelText: 'TOTAL INCOME',
@@ -110,8 +127,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) async{
-                        setState(() =>val = groceries.toString());
+                      onChanged: (val) async {
+                        setState(() => groceries = double.parse(val));
                       },
                       decoration: InputDecoration(
                           labelText: 'GROCERIES',
@@ -126,8 +143,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) async{
-                        setState(() =>val = emi.toString());
+                      onChanged: (val) async {
+                        setState(() => emi = double.parse(val));
                       },
                       decoration: InputDecoration(
                           labelText: 'EMI',
@@ -142,8 +159,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) async{
-                      setState(() =>val = shopping.toString());
+                      onChanged: (val) async {
+                        setState(() => shopping = double.parse(val));
                       },
                       decoration: InputDecoration(
                           labelText: 'SHOPPING',
@@ -158,8 +175,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) async{
-                    setState(() =>val = housing.toString());
+                      onChanged: (val) async {
+                        setState(() => housing = double.parse(val));
                       },
                       decoration: InputDecoration(
                           labelText: 'HOUSING',
@@ -174,8 +191,8 @@ class _HomeState extends State<Records> {
                     SizedBox(height: 10.0),
                     TextField(
                       keyboardType: TextInputType.number,
-                      onChanged: (val) async{
-                   setState(() =>val = education.toString());
+                      onChanged: (val) async {
+                        setState(() => education = double.parse(val));
                       },
                       decoration: InputDecoration(
                         labelText: 'EDUCATION',

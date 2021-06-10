@@ -32,6 +32,7 @@ late Map<String, double> dataMap;
     "Groceries": widget.percentageGroceries,
   };
   print(widget.percentageEducation);
+  
   print(widget.percentageEmi);
   print(widget.percentageGroceries);
   print(widget.percentageHousing);
@@ -43,33 +44,40 @@ late Map<String, double> dataMap;
   Widget build(BuildContext context) {
     return  Container(
       child: Scaffold(
-        body: PieChart(
-        dataMap: dataMap,
-        animationDuration: Duration(milliseconds: 800),
-        chartLegendSpacing: 50,
-        chartRadius: MediaQuery.of(context).size.width / 3,
-        colorList: colorList,
-        initialAngleInDegree: 0,
-        chartType: ChartType.ring,
-        ringStrokeWidth:20,
-        centerText: "",
-        legendOptions: LegendOptions(
-          showLegendsInRow: false,
-          legendPosition: LegendPosition.bottom,
-          showLegends: true,
-          legendShape: BoxShape.circle,
-          legendTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Expense Structure',textScaleFactor: 2,style: TextStyle(fontSize: 15),),
+            SizedBox(height: 100,),
+            PieChart(
+            dataMap: dataMap,
+            animationDuration: Duration(milliseconds: 800),
+            chartLegendSpacing: 50,
+            chartRadius: MediaQuery.of(context).size.width / 1.5,
+            colorList: colorList,
+            initialAngleInDegree: 0,
+            chartType: ChartType.disc,
+            ringStrokeWidth:50,
+            centerText: "",
+            legendOptions: LegendOptions(
+              showLegendsInRow: true,
+              legendPosition: LegendPosition.bottom,
+              showLegends: true,
+              legendShape: BoxShape.rectangle,
+              legendTextStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            chartValuesOptions: ChartValuesOptions(
+              showChartValueBackground: false,
+              showChartValues: true,
+              showChartValuesInPercentage: true,
+              showChartValuesOutside: false,
+              decimalPlaces: 1,
+            ),
+              ),
+          ],
         ),
-        chartValuesOptions: ChartValuesOptions(
-          showChartValueBackground: true,
-          showChartValues: true,
-          showChartValuesInPercentage: true,
-          showChartValuesOutside: false,
-          decimalPlaces: 1,
-        ),
-          ),
       ),
     );
   }
